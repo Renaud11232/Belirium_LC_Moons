@@ -1,0 +1,25 @@
+name: Release
+on:
+  release:
+    types:
+      - published
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: GreenTF/upload-thunderstore-package@v4.2
+        with:
+          token: ${{ secrets.THUNDERSTORE_TOKEN }}
+          community: "lethal-company"
+          namespace: Renaud11232
+          repo: thunderstore.io
+          name: "Belirium_LC_Moons"
+          description: "Moons ModPack for the Belirium Studio"
+          version: ${{ github.ref_name }}
+          website: https://github.com/Renaud11232/Belirium_LC_Moons
+          categories: |
+            modpacks
+          deps: |
+            ViktorP04-IKEAMoon@1.0.0
+            
